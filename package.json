@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "invoke": "sls invoke local -f hello",
+    "deploy": "sls deploy --stage dev --verbose"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.1158.0",
+    "serverless-offline": "^8.8.0"
+  }
+}
