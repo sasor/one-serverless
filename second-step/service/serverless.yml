@@ -1,0 +1,21 @@
+service: service
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: serverless
+  stage: dev
+  region: us-east-1
+
+functions:
+  layer:
+    handler: handler.layer
+    environment:
+      NODE_PATH: './:/opt/node_modules'
+    layers:
+      - arn:aws:lambda:${self:provider.region}:${aws:accountId}:layer:${opt:stage, 'test'}-dayjs:1
+    events:
+      - httpApi:
+          path: /info
+          method: get
